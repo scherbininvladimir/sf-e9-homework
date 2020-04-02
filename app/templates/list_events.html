@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <header class="d-flex p-3 justify-content-between">
+        <a href="/create_event">Создать событие</a>
+        {% if current_user.is_authenticated %}
+        <p>Вы зарегистрированы как {{ current_user.login }}! <a href="/logout">Выйти</a></p>
+        {% endif %}
+    
+    </header>
+    <p></p>
+    <table class="table table-sm">
+    <tr>
+        <th>Тема</th>
+        <th>Описание</th>
+        <th>Время начала</th>
+        <th>Время окончания</th>
+        <th>Автор</th>
+        <th>Действие</th>
+    </tr>
+
+    {% for event in events %}
+    <tr>
+        <td>{{ event.title }}</td>
+        <td>{{ event.description }}</td>
+        <td>{{ event.start_time }}</td>
+        <td>{{ event.end_time }}</td>
+        <td>{{ event.author }}</td>
+        <td>
+            {% if current_user.login == event.author %}
+                    <a href="/edit_event/{{event._id}}">Редактировать</a>
+                    <a href="/delete_event/{{event._id}}">Удалить</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+
+    </table>
+
+{% endblock %}

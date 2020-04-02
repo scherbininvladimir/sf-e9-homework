@@ -1,0 +1,6 @@
+{
+    "name": "Events",
+    "description": "Сервис планирования событий",
+    "image": "heroku/python",
+    "keywords": ["python", "flask" ]
+  }

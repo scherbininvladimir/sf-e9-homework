@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row d-flex justify-content-center align-items-center vh-100">
+        <div class="col-md-10 col-lg-5">
+            <h2>Вход в систему.</h2>
+            <form action="" method="POST" name="login">
+                {{ form.csrf_token }}
+                <div class="form-group">
+                    {{ form.login.label }} {{ form.login(class_='form-control')}} 
+                </div>
+                <div class="form-group">
+                    {{ form.password.label }} {{ form.password(class_='form-control') }}
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">Войти</button>                    
+                </div>
+                <div class="form-group text-center">
+                    <a class="btn btn-primary" href="/create_user">Зарегистрировать нового пользователя</a>
+                </div>  
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
