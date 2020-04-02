@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship, sessionmaker
 Base = declarative_base()
 metadata = Base.metadata
 
-class Event(Base):
+class Event(db.Model):
     __tablename__ = 'event_test'
     _id = db.Column(db.Integer, primary_key=True)
     author = db.Column(db.String, db.ForeignKey('user_test.login'))
@@ -14,7 +14,7 @@ class Event(Base):
     title = db.Column(db.String(256), unique=False, nullable=False)
     description = db.Column(db.Text, unique=False, nullable=True)
 
-class User(Base):
+class User(db.Model):
     __tablename__ = 'user_test'
     login = db.Column(db.String, primary_key=True)
     password = db.Column(db.String)

@@ -113,7 +113,6 @@ def create_user():
             if login in [u[0] for u in User.query.with_entities(User.login).all()]:
                 error="Пользователь с таким именем уже зарегистрирован"
                 return render_template('error.html',form=form,error = error)
-            print(users) 
             password = request.form.get('password')
             user = User(login=login, password=bcrypt.generate_password_hash(password).decode('utf-8'))
             db.session.add(user)

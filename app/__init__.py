@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from flask_wtf.csrf import CsrfProtect
 from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
@@ -21,7 +22,7 @@ def create_app():
 
 app = create_app()
 db = SQLAlchemy(app)
-db.create_all()
+migrate = Migrate(app, db)
 login_manager = LoginManager()
 login_manager.init_app(app)
 bcrypt = Bcrypt(app)
