@@ -8,4 +8,4 @@ flask-wtf==0.14.3
 gunicorn
 alembic
 flask-login
-bcrypt
+flask-bcrypt
